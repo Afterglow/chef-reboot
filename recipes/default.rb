@@ -20,10 +20,14 @@
 
 chef_handler "Reboot" do
   source "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
-  if node['bootstrap']['auto_reboot'].nil? || node['bootstrap']['auto_reboot'] == 1
-    action :enable
+  if node.has_key? :bootstrap
+    if node[:bootstrap].has_key? :auto_reboot && node[:bootstrap][:auto_reboot] == 0
+      action :disable
+    else
+      action :enable
+    end
   else
-    action :disable
+    action :enable
   end
 end
 
