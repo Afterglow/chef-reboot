@@ -27,7 +27,7 @@ chef_handler "Reboot" do
   end
 end
 
-cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
+cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
   source "reboot_handler.rb"
   owner "root"
   group "root"
