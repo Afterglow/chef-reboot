@@ -19,22 +19,23 @@
 class RebootHandler < Chef::Handler
   include Chef::Mixin::ShellOut
 
-  def initialize(allow_pending_reboots=true, timeout=60, reason="Reboot by Chef")
+  def initialize(allow_pending_reboots=true, delay=2, reason="Reboot by Chef")
     @allow_pending_reboots = allow_pending_reboots
-    @timeout = timeout
+    @delay = delay
     @reason = reason
   end
 
   def report
     Chef::Log::warn("Rebooting system from Chef")
-    shell_out!("shutdown -r 60 #{reason}")
+    shell_out!("shutdown -r #{@delay} #{@reason}")
+  end
 
   def reboot_requested?
     node.run_state[:reboot_requested] == true
   end
 
-  def timeout
-    node.run_state[:reboot_timeout] || @timeout
+  def delay
+    node.run_state[:reboot_delay] || @delay
   end
 
   def reason

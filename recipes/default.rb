@@ -18,7 +18,15 @@
 # limitations under the License.
 #
 
-chef_handler "Reboot" do
+cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
+  source "reboot_handler.rb"
+  owner "root"
+  group "root"
+  mode "0644"
+  action :create
+end
+
+chef_handler "RebootHandler" do
   source "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
   if node.has_key? :bootstrap
     if node[:bootstrap].has_key? :auto_reboot && node[:bootstrap][:auto_reboot] == 0
@@ -29,12 +37,4 @@ chef_handler "Reboot" do
   else
     action :enable
   end
-end
-
-cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
-  source "reboot_handler.rb"
-  owner "root"
-  group "root"
-  mode "0644"
-  action :create_if_missing
 end
