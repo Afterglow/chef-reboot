@@ -40,3 +40,4 @@ class RebootHandler < Chef::Handler
   def reason
     node.run_state[:reboot_reason] || @reason
   end
+end
