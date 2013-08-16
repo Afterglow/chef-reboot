@@ -27,7 +27,7 @@ class RebootHandler < Chef::Handler
 
   def report
     Chef::Log::warn("Rebooting system from Chef")
-    shell_out!("shutdown -r #{@delay} #{@reason}")
+    shell_out!("shutdown -r #{delay} #{reason}")
   end
 
   def reboot_requested?
