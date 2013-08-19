@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+include_recipe "chef_handler"
+
 cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
   source "reboot_handler.rb"
   owner "root"
