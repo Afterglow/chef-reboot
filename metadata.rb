@@ -1,3 +1,4 @@
+name             "reboot"
 maintainer       "Paul Thomas"
 maintainer_email "paul.thomas@livingsocial.com"
 license          "Apache 2.0"
