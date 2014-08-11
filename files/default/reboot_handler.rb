@@ -1,6 +1,7 @@
 # encoding: UTF-8
-# Author:: Paul Thomas <paul.thomas@livingsocial.com>
-# Copyright:: Copyright (c) 2011 LivingSocial
+# Author:: Paul Thomas <paul@paulthomas.eu>
+# Copyright:: Copyright (c) 2011-13 LivingSocial
+# Copyright:: Copyright (c) 2013-14 Paul Thomas
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
