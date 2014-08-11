@@ -1,9 +1,8 @@
 # encoding: UTF-8
 # Cookbook Name:: reboot
-# Recipe:: default
+# Attributes:: default
 #
-# Copyright 2012-13, LivingSocial
-# Copyright 2013-14, Paul Thomas
+# Copyright 2014, Paul Thomas
 # Author: Paul Thomas <paul@paulthomas.eu>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,21 +18,4 @@
 # limitations under the License.
 #
 
-include_recipe 'chef_handler'
-
-cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
-  source 'reboot_handler.rb'
-  owner 'root'
-  group 'root'
-  mode '0644'
-  action :create
-end
-
-chef_handler 'RebootHandler' do
-  source "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
-  if node[:reboot][:auto_reboot] == 0
-    action :disable
-  else
-    action :enable
-  end
-end
+default['reboot']['auto_reboot'] = 0

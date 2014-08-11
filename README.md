@@ -4,8 +4,8 @@ Provides a very simple way to trigger a reboot at the end of a chef run fron a c
 
 Attributes
 ==========
-`node[:boostrap][:auto_reboot]` defaults to 1. Define and set to 0 if you don't want a node to auto reboot when the recipe is included.
+`node[:reboot][:auto_reboot]` defaults to 0. Override or set to 1 if you want a node to auto reboot when the recipe is included.
 
 Usage
 =====
-Add `recipe[reboot]` to your runlist. Set `node[:boostrap][:auto_reboot]` to 0 to prevent reboot from occuring.
+Add `recipe[reboot]` to your runlist. Set `node[:reboot][:auto_reboot] = 1` to trigger a reboot at the end of the run.
