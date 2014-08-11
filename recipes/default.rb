@@ -1,4 +1,4 @@
-#
+# encoding: UTF-8
 # Cookbook Name:: reboot
 # Recipe:: default
 #
@@ -18,20 +18,20 @@
 # limitations under the License.
 #
 
-include_recipe "chef_handler"
+include_recipe 'chef_handler'
 
 cookbook_file "#{node['chef_handler']['handler_path']}/reboot_handler.rb" do
-  source "reboot_handler.rb"
-  owner "root"
-  group "root"
-  mode "0644"
+  source 'reboot_handler.rb'
+  owner 'root'
+  group 'root'
+  mode '0644'
   action :create
 end
 
-chef_handler "RebootHandler" do
+chef_handler 'RebootHandler' do
   source "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
-  if node.has_key? :bootstrap
-    if node[:bootstrap].has_key? :auto_reboot && node[:bootstrap][:auto_reboot] == 0
+  if node.key? :bootstrap
+    if node[:bootstrap].key?(:auto_reboot) && node[:bootstrap][:auto_reboot] == 0
       action :disable
     else
       action :enable
