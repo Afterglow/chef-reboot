@@ -31,7 +31,7 @@ end
 
 chef_handler 'RebootHandler' do
   source "#{node['chef_handler']['handler_path']}/reboot_handler.rb"
-  if node[:reboot][:auto_reboot] == 0
+  if node['reboot']['auto_reboot'].zero?
     action :disable
   else
     action :enable
