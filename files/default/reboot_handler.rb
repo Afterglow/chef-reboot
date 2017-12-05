@@ -16,11 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#:nodoc: all
 
 class RebootHandler < Chef::Handler
   include Chef::Mixin::ShellOut
 
-  def initialize(allow_pending_reboots = true, delay = 2, reason = 'Reboot by Chef')
+  def initialize(allow_pending_reboots = true,
+                 delay = 2,
+                 reason = 'Reboot by Chef')
     @allow_pending_reboots = allow_pending_reboots
     @delay = delay
     @reason = reason
